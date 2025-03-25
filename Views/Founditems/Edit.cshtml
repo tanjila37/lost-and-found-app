@@ -1,0 +1,95 @@
+﻿@model Lost_and_Found.Models.Founditem
+
+@{ ViewData["Title"] = "Edit"; }
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Found Item</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0; /* Set your desired background color */
+        }
+
+        .container-custom {
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background to the form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            width: 80%; /* Adjust the width as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container-custom mt-5 mb-5">
+        <div class="col-md-6 form-container">
+            <h1 class="text-center">Edit Found Item</h1>
+            <hr />
+
+
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="ItemId" />
+                <div class="form-group">
+                    <label asp-for="ItemName" class="control-label">Item Name</label>
+                    <input asp-for="ItemName" class="form-control" required />
+                    <span asp-validation-for="ItemName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Select a Category</label>
+                    <label for="category"></label>
+                    <select asp-for="ItemCategory" class="form-control">
+                        <option value="People">People</option>
+                        <option value="Mobiles">Mobiles</option>
+                        <option value="Electronics">Electronics</option>
+                        <option value="Vehicles">Vehicles</option>
+                        <option value="Keys">Keys</option>
+                        <option value="Pets">Pets</option>
+                        <option value="Wallet and Parse">Wallet and Parse</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <span asp-validation-for="ItemCategory" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Description" class="control-label"></label>
+                    <input asp-for="Description" class="form-control" required />
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FoundArea" class="control-label">Found Area</label>
+                    <input asp-for="FoundArea" class="form-control" required />
+                    <span asp-validation-for="FoundArea" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Date" class="control-label"></label>
+                    <input asp-for="Date" class="form-control" required />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+                <div class="form-group mt-4 mb-3">
+                    <label asp-for="ImageFile" class="control-label">Upload Image</label>
+                    <input asp-for="ImageFile" type="file" accept="image/*" required>
+                    <span asp-validation-for="ImageFile" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <a asp-action="Index" class="btn btn-secondary ml-20">Back to List</a>
+                </div>
+
+            </form>
+        </div>
+
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

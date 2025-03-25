@@ -1,0 +1,135 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Lost_and_Found</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" />
+
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Post"><img src="~/img/logo3.jpg" alt="site logo" class="site_logo" /></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active text-uppercase">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><i class="fa-solid fa-house"></i> Home</a>
+                </li>
+
+
+                @{
+
+                    string admin = Context.Session.GetString("Admin");
+                    string name = @Context.Session.GetString("FirstName");
+
+                    if (name == null && admin == null)
+                    {
+                        <li class="nav-item text-uppercase">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Create"><i class="fa-solid fa-user-plus"></i> Register</a>
+                        </li>
+
+                        <li class="nav-item text-uppercase">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Login"><i class="fa-solid fa-user-check"></i> Login</a>
+                        </li>
+
+                    }
+                    else if (name != null)
+                    {
+                        <li class="nav-item text-uppercase">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Logout"><i class="fa-solid fa-user"></i> Logout</a>
+                        </li>
+
+                    }
+                    else
+                    {
+                        <li class="nav-item text-uppercase">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Admins" asp-action="Logout"><i class="fa-solid fa-user-minus"></i> Logout</a>
+                        </li>
+                    }
+                }
+
+
+
+                <li class="nav-item text-uppercase">
+                    <a class="nav-link text-white" asp-area="" asp-controller="Home" asp-action="Contact"><i class="fa-solid fa-phone"></i> Contact Us</a>
+                </li>
+
+                <li class="nav-item active text-uppercase">
+                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Post"><i class="fa-solid fa-newspaper"></i> Recent Posts</a>
+                </li>
+
+                <li class="nav-item dropdown text-uppercase">
+                    <a class="nav-link dropdown-toggle text-white" href="#" id="itemPostsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa-solid fa-clipboard-list"></i> All Posts
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="itemPostsDropdown">
+                        <a class="dropdown-item" asp-area="" asp-controller="Lostitems" asp-action="Index">Lost Item Posts</a>
+                        <a class="dropdown-item" asp-area="" asp-controller="Founditems" asp-action="Index">Found Item Posts</a>
+                    </div>
+                </li>
+
+                @{
+                    if (admin != null)
+                    {
+
+                        <li class="nav-item text-uppercase">
+                            <a class="nav-link text-white" asp-area="" asp-controller="Users" asp-action="Index"><i class="fa-solid fa-user-minus"></i> Users</a>
+                        </li>
+                        
+                        <li><span class="nav-link text-white">Hi!! @Context.Session.GetString("Admin")</span></li> 
+
+                    }
+                }
+
+
+                @if (name != null)
+                {
+                    <li class="nav-item">
+                        <span class="nav-link text-white">Hi!! @Context.Session.GetString("FirstName")</span>
+                    </li>
+                }
+
+            </ul>
+
+            <div class="form-inline my-2 my-lg-0">
+
+                @using (Html.BeginForm("Search", "Home", FormMethod.Get, new { @class = "form-inline my-2 my-lg-0" }))
+                {
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="Search" required pattern=".*\S+.*" title="Please enter search phrase..." />
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="fa-solid fa-magnifying-glass"></i> Search</button>
+                }
+
+            </div>
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted bg-dark text-center">
+        <div class="container text-white p-2">
+            &copy; 2023 - Lost and Found
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

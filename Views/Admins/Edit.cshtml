@@ -1,0 +1,72 @@
+﻿@model Lost_and_Found.Models.Admin
+
+@{ ViewData["Title"] = "Edit"; }
+<style>
+    body {
+        background-color: #9b93d1;
+    }
+
+    .row {
+        height: 100vh;
+        width: 100%;
+        display: flex;
+        margin-bottom: 10px;
+        justify-content: center;
+        align-items: center;
+        box-shadow: gray;
+    }
+
+    .btn-secondary {
+        margin-left: 20px
+    }
+</style>
+<div class="row">
+    <div class="col-md-4 bg-white p-4 rounded">
+
+        <p class="text-center font-weight-bolder" style="font-size:25px;"><i class="fa-solid fa-user"></i></p>
+        <h6 class="text-center m-0 p-0">Edit Profile</h6>
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="AdminId" />
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Password" class="control-label"></label>
+                <input asp-for="Password" class="form-control" required />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Address" class="control-label"></label>
+                <input asp-for="Address" class="form-control" />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Contact" class="control-label"></label>
+                <input asp-for="Contact" class="form-control" />
+                <span asp-validation-for="Contact" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+                <a asp-action="Index" class="btn btn-secondary ml-5">Back to List</a>
+            </div>
+            <!-- ... (other form groups) ... -->
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

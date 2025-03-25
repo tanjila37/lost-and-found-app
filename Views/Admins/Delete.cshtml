@@ -1,0 +1,102 @@
+﻿@model Lost_and_Found.Models.Admin
+
+@{ ViewData["Title"] = "Delete"; }
+
+<style>
+    body {
+        background-color: #f5f5f5;
+    }
+
+    .details-container {
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        justify-content: center;
+        align-content: center;
+        align-items: center
+    }
+
+    .details-title {
+        margin-bottom: 20px;
+    }
+
+    .details-link {
+        margin-top: 20px;
+        text-align: center;
+    }
+</style>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center" style="min-height: 100vh;">
+            <div class="col-md-8 details-container">
+                <h3 class="text-center details-title">Delete</h3>
+
+                <h5>Admin</h5>
+                <hr />
+                <dl class="row">
+                    <dt class="col-sm-2">
+                        First Name
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.FirstName)
+                    </dd>
+                    <!-- ... (other fields) ... -->
+                    <dt class="col-sm-2">
+                        Last Name
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.LastName)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Email
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Email)
+                    </dd>
+                    @*<dt class="col-sm-2">
+                        @Html.DisplayNameFor(model => model.Password)
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Password)
+                    </dd>*@
+                    <dt class="col-sm-2">
+                        Address
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Address)
+                    </dd>
+                    <dt class="col-sm-2">
+                        Contact
+                    </dt>
+                    <dd class="col-sm-10">
+                        @Html.DisplayFor(model => model.Contact)
+                    </dd>
+                </dl>
+
+
+                <div>
+                    <form asp-action="Delete" class="delete-button">
+                        <input type="hidden" asp-for="AdminId" />
+                        <input type="submit" value="Delete" class="btn btn-danger mr-5" /> 
+                        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+</body>
+</html>

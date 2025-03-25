@@ -1,0 +1,18 @@
+﻿@model Tuple<Lost_and_Found.Models.Founditem, Lost_and_Found.Models.Lostitem>
+
+@{
+    Layout = "~/Views/Post.cshtml";
+    ViewData["Title"] = "Combined View";
+}
+
+<h1>Combined View</h1>
+
+<h2>Found Item</h2>
+<p>Item Name: @Model.Item1.ItemName</p>
+<p>Item Category: @Model.Item1.ItemCategory</p>
+<!-- Include other properties of Founditem similarly -->
+
+<h2>Lost Item</h2>
+<p>Item Name: @Model.Item2.ItemName</p>
+<p>Item Category: @Model.Item2.ItemCategory</p>
+<!-- Include other properties of Lostitem similarly -->

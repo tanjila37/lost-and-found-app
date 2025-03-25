@@ -1,0 +1,13 @@
+﻿@model Lost_and_Found.Models.User
+@using Microsoft.AspNetCore.Http;
+@{ ViewData["Title"] = "Success"; }
+
+<h2>Login Successful</h2>
+
+<br />
+
+<script>
+    setTimeout(function() {
+        window.location.href = '@Url.Action("Index", "Home")';
+    }, 2000); // 2000 milliseconds (2 seconds) delay
+</script>

@@ -1,0 +1,12 @@
+﻿@model Lost_and_Found.Models.User
+@{
+    ViewData["Title"] = "Failed";
+}
+
+<h2>Login Failed</h2>
+
+<script>
+    setTimeout(function() {
+        window.location.href = '@Url.Action("Login", "Users")';
+    }, 2000); // 2000 milliseconds (2 seconds) delay
+</script>

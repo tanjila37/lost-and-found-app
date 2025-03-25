@@ -1,0 +1,15 @@
+﻿@model Lost_and_Found.Models.Claim
+
+<h2>Claim Details</h2>
+<div>
+    <strong>Claim ID:</strong> @Model.ClaimId
+</div>
+<div>
+    <strong>User:</strong> @Model.User.FirstName @Model.User.LastName
+    <!-- Display other user details here -->
+</div>
+<div>
+    <strong>Found Item:</strong> @Model.Item.ItemName
+    <!-- Display other found item details here -->
+</div>
+<!-- Display other claim details here -->

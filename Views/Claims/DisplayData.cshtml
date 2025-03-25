@@ -1,0 +1,25 @@
+﻿@model List<Lost_and_Found.Models.Claim>
+
+<h1>Display Saved Data</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Claim ID</th>
+            <th>User ID</th>
+            <th>Item ID</th>
+            <!-- Add other column headers as needed -->
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimId</td>
+                <td>@claim.UserId</td>
+                <td>@claim.ItemId</td>
+                <!-- Render other properties as needed -->
+            </tr>
+        }
+    </tbody>
+</table>
